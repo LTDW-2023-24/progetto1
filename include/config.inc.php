@@ -1,6 +1,7 @@
 <?php
 
     $config['skin'] = "landkit";
+    $config['dashboard'] = "admin";
 
     $config['dbms']['localhost']['user'] = "root";
     $config['dbms']['localhost']['passwd'] = "root";

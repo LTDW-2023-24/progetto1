@@ -49,7 +49,13 @@ Class Template {
 
 		global $config;
 
-		$filename = "skins/{$config['skin']}/html/{$filename}.html";
+		if (isset($config['auth'])) {
+			$skin = 'admin';
+		} else {
+			$skin = $config['skin'];
+		}
+
+		$filename = "skins/{$skin}/html/{$filename}.html";
 		if (file_exists($filename)) {
 			$this->template_file = $filename;
 
