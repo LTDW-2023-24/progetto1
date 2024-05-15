@@ -19,12 +19,18 @@ error_reporting(E_ALL);
 
     switch ($_REQUEST['state']) {
         case 0: // emit report
-        
+
+            $body = new Template("report");
+
+            $body->setContent("report", ['table' => 'content', 'fields' => 'title, subtitle, slogan', 'key' => 'id']);
+            
             break;
 
-        case 1: // query (select) + emit form (pre-charged)
+        case 1: // query (SELECT) + emit form (pre-charged)
 
-            $query = "INSERT INjjjjjTO content VALUES(null, '{$_POST['title']}', '{$_POST['subtitle']}', '{$_POST['slogan']}','','', '', '{$_POST['body']}')";
+            $query = "";
+
+            echo "STATE 1"; exit;
             
             $result = $mysqli->query($query);
 
@@ -38,7 +44,7 @@ error_reporting(E_ALL);
 
             
             break;
-        case 2: // query (update) + emit form (pre-charged)
+        case 2: // query (UPDATE) + emit form (pre-charged)
             break;
 
 
