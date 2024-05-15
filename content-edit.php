@@ -15,17 +15,16 @@ error_reporting(E_ALL);
         $_REQUEST['state'] = 0;
     }
 
-    $body = new Template("content-add");
+    
 
     switch ($_REQUEST['state']) {
-        case 0: // emit form
-            
-            
+        case 0: // emit report
+        
             break;
 
-        case 1: // query + notifica + emit form
+        case 1: // query (select) + emit form (pre-charged)
 
-            $query = "INSERT INTO content VALUES(null, '{$_POST['title']}', '{$_POST['subtitle']}', '{$_POST['slogan']}','','', '', '{$_POST['body']}')";
+            $query = "INSERT INjjjjjTO content VALUES(null, '{$_POST['title']}', '{$_POST['subtitle']}', '{$_POST['slogan']}','','', '', '{$_POST['body']}')";
             
             $result = $mysqli->query($query);
 
@@ -38,6 +37,8 @@ error_reporting(E_ALL);
 
 
             
+            break;
+        case 2: // query (update) + emit form (pre-charged)
             break;
 
 

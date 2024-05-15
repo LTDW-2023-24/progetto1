@@ -23,8 +23,18 @@
     <link rel="stylesheet" href="skins/admin/assets/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="skins/admin/assets/images/favicon.png" />
+    <script src="https://cdn.tiny.cloud/1/lfx5nv6aaiughydede4ntewpxrrz54tqwrkqu8tk87kzcp0h/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '.editor'
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="   crossorigin="anonymous"></script>
+    <[notify::get_message library="notify"]>
+
   </head>
   <body class="with-welcome-text">
+
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
         <div class="col-md-12 p-0 m-0">

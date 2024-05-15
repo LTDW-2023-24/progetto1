@@ -8,6 +8,7 @@ error_reporting(E_ALL);
     require "include/dbms.inc.php";
     require "include/auth.inc.php";
     require "include/template2.inc.php";
+    require "include/forms.inc.php";
 
     $main = new Template("frame");
 
@@ -15,39 +16,29 @@ error_reporting(E_ALL);
         $_REQUEST['state'] = 0;
     }
 
-    $body = new Template("content-add");
+    $form = (new Form())
+        ->add(new Text("title", "Title"))
+        ->add(new Text("subtitle", "Subitle"))
+        ->add(new Text("slogan", "Slogan"))
+        ->add(new Editor("body", "Body"))
+        ->add(new Select("id_user", $user))
+        ->add(new Submit("Add"))
+        ->add(new Reset("Cancel"));
 
     switch ($_REQUEST['state']) {
         case 0: // emit form
             
-            
             break;
 
         case 1: // query + notifica + emit form
-
-            $query = "INSERT INTO content VALUES(null, '{$_POST['title']}', '{$_POST['subtitle']}', '{$_POST['slogan']}','','', '', '{$_POST['body']}')";
-            
-            $result = $mysqli->query($query);
-
-            if (!$result) {
-                $main->setContent("notify", "error");
-                // die("Error in query: ".$mysqli->error);
-            } else {
-                $main->setContent("notify", "success");
-            }
-
-
             
             break;
 
 
     }
-
-
-
     
 
-    $main->setContent("body", $body->get());
+    $main->setContent("body", $form->emit());
     $main->close();
 
 ?>
