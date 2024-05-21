@@ -1002,7 +1002,8 @@ Class Cache{
 	var $caching,
 		$cache_dir,
 		$cache_file,
-		$cache_file_lifetime;
+		$cache_file_lifetime,
+		$template_file_name;
 	
    function __construct($template_file){
 		$this->cache_dir = $this->setDefaultCacheDir();
@@ -1138,7 +1139,8 @@ Class ForeachCode {
 	var $foreachCodeArray,
 		$placeholderArray,
 		$foreachHierarchyArray,
-		$deep;
+		$deep,
+		$foreachCounter;
 		
 	function __construct(){
 		$this->deep=0;
