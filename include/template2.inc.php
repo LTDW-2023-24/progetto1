@@ -935,6 +935,12 @@ Class Template {
 
 	function get() {
 		
+		if (isset($_SESSION)) {
+			foreach($_SESSION['user'] as $k => $v) {
+				$this->setContent("user.".$k,$v);
+			}
+		}
+
 		if (!$this->parsed) {
 			$this->parse();
 		}
@@ -948,7 +954,13 @@ Class Template {
 	}
 
 	function close() {
-		
+
+		if (isset($_SESSION)) {
+			foreach($_SESSION['user'] as $k => $v) {
+				$this->setContent("user.".$k,$v);
+			}
+		}
+
 		$this->setContent("style", $this->getExtension());
 		
 		if (!$this->parsed) {
