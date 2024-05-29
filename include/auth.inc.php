@@ -63,6 +63,40 @@
 
     }
 
+    $result = $mysqli->query("SELECT * FROM service WHERE script = '{$script}'");
+
+    if (!$result) {
+        die("Error 200");
+    }
+
+    $data = $result->fetch_assoc();
+
+    if ($data['permission'] == '*') {
+                
+        $result = $mysqli->query("SELECT * FROM {$data['entity']} WHERE {$data['field']} = {$_REQUEST['key']}");
+
+        if (!result) {
+            die("Error 100");
+        } 
+
+        if ($result->num_rows == 1) {
+            $data = $result->fetch_assoc();
+
+            if ($data['username'] != $_SESSION['user']['username']) {
+
+                Header("Location: error.php?error=1000");
+                exit;
+            }
+
+        } else {
+            Header("Location: error.php?error=1100");
+            exit;
+        }    
+
+    } 
+    
+
+
     
 
 ?>

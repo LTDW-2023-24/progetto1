@@ -26,10 +26,17 @@
 
         case 1: // query (SELECT) + emit form (pre-charged)
 
-            $query = "";
 
-            echo "STATE 1"; exit;
             
+
+            
+
+
+            echo $_SESSION['user']['username'], " STATE 1"; exit;
+            
+            /******************* */
+            
+            $query = "";
             $result = $mysqli->query($query);
 
             if (!$result) {
